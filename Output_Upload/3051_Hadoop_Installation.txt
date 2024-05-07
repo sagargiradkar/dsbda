@@ -1,0 +1,352 @@
+Name: Sagar Giradkar
+RollNo: 3051
+Ass: Hadoop Installation
+
+
+////////////////////////Hadoop Installation/////////////////////////////
+
+hduser@student-ThinkCentre-M700:~$ start-dfs.sh
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [student-ThinkCentre-M700]
+2024-03-07 13:03:19,518 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~$ start-yarn.sh
+Starting resourcemanager
+Starting nodemanagers
+hduser@student-ThinkCentre-M700:~$ jps
+3394 NameNode
+3783 SecondaryNameNode
+4183 NodeManager
+3545 DataNode
+4523 Jps
+4043 ResourceManager
+hduser@student-ThinkCentre-M700:~$ hdfs dfs -mkdir /ARP
+2024-03-07 13:09:33,924 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~$ cd Documents/
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -put test.txt /ARP
+2024-03-07 13:17:32,415 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ cd ..
+hduser@student-ThinkCentre-M700:~$ hdfs dfs -cat /ARP/test.txt
+2024-03-07 13:18:39,580 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+this is the file1
+hduser@student-ThinkCentre-M700:~$ cd Documents
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -appendToFile test2.txt/ARP/test.txt
+2024-03-07 13:22:36,831 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+appendToFile: missing destination argument
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -cat /ARP/test.txt
+2024-03-07 13:22:49,566 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+this is the file1
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -appendToFile test2.txt /ARP/test.txt
+2024-03-07 13:24:26,180 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -cat /ARP/test.txt
+2024-03-07 13:24:31,958 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+this is the file1
+this is file which is append in file 1
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -copyFromLocal test2.txt /ARP
+2024-03-07 13:30:16,467 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -copyToLocal /ARP test1.txt
+2024-03-07 13:31:51,222 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -ls /ARP
+2024-03-07 13:34:29,513 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+Found 2 items
+-rw-r--r-- 1 hduser supergroup 58 2024-03-07 13:24 /ARP/test.txt
+-rw-r--r-- 1 hduser supergroup 39 2024-03-07 13:30 /ARP/test2.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -touchz /test3.txt
+2024-03-07 13:35:51,871 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -touchz /test3.txt
+2024-03-07 13:36:44,015 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -touch /test3.txt
+2024-03-07 13:37:44,352 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ cd ..
+hduser@student-ThinkCentre-M700:~$ hdfs dfs -touch /ARP/test3.txt
+2024-03-07 13:40:11,035 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~$ hdfs dfs -touchz /ARP/test4.txt
+2024-03-07 13:44:54,225 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -cp /ARP/test2.txt /ARP/test5.txt
+2024-03-07 13:52:38,728 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -mv /my_data /ARP
+2024-03-07 13:59:47,177 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -rm` /ARP/test5.txt
+> hdfs dfs -mv /my_data /ARP^C
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -rm /ARP/test5.txt
+2024-03-07 14:02:32,253 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+Deleted /ARP/test5.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -mkdir /ARP1
+2024-03-07 14:03:31,808 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -rmdir /ARP1
+2024-03-07 14:03:50,386 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -stat /ARP/test.txt
+2024-03-07 14:04:41,566 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+2024-03-07 07:54:26
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -stat /ARP/test2.txt
+2024-03-07 14:05:13,333 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+2024-03-07 08:00:17
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -count /ARP/test.txt
+2024-03-07 14:05:46,034 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+ 0 1 58 /ARP/test.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -count /ARP/test2.txt
+2024-03-07 14:05:54,580 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+ 0 1 39 /ARP/test2.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt -name test -print
+2024-03-07 14:07:46,518 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt -name " "
+2024-03-07 14:07:56,453 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt -name "is"
+2024-03-07 14:08:29,572 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt -name "is" -print
+2024-03-07 14:09:10,631 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt -name is -print
+2024-03-07 14:10:11,640 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt -name test -print
+2024-03-07 14:10:25,672 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt -name this -print
+2024-03-07 14:11:00,815 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find
+2024-03-07 14:11:55,089 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+-find: Not enough arguments: expected 1 but got 0
+Usage: hadoop fs [generic options]
+[-appendToFile <localsrc> ... <dst>]
+[-cat [-ignoreCrc] <src> ...]
+[-checksum [-v] <src> ...]
+[-chgrp [-R] GROUP PATH...]
+[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+[-chown [-R] [OWNER][:[GROUP]] PATH...]
+[-concat <target path> <src path> <src path> ...]
+[-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
+[-copyToLocal [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... 
+<localdst>]
+[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] [-s] <path> ...]
+[-cp [-f] [-p | -p[topax]] [-d] [-t <thread count>] [-q <thread pool queue size>] <src> ... <dst>]
+[-createSnapshot <snapshotDir> [<snapshotName>]]
+[-deleteSnapshot <snapshotDir> <snapshotName>]
+[-df [-h] [<path> ...]]
+[-du [-s] [-h] [-v] [-x] <path> ...]
+[-expunge [-immediate] [-fs <path>]]
+[-find <path> ... <expression> ...]
+[-get [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
+[-getfacl [-R] <path>]
+[-getfattr [-R] {-n name | -d} [-e en] <path>]
+[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+[-head <file>]
+[-help [cmd ...]]
+[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
+[-mkdir [-p] <path> ...]
+[-moveFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+[-moveToLocal <src> <localdst>]
+[-mv <src> ... <dst>]
+[-put [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
+[-renameSnapshot <snapshotDir> <oldName> <newName>]
+[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+[-setfattr {-n name [-v value] | -x name} <path>]
+[-setrep [-R] [-w] <rep> <path> ...]
+[-stat [format] <path> ...]
+[-tail [-f] [-s <sleep interval>] <file>]
+[-test -[defswrz] <path>]
+[-text [-ignoreCrc] <src> ...]
+[-touch [-a] [-m] [-t TIMESTAMP (yyyyMMdd:HHmmss) ] [-c] <path> ...]
+[-touchz <path> ...]
+[-truncate [-w] <length> <path> ...]
+[-usage [cmd ...]]
+Generic options supported are:
+-conf <configuration file> specify an application configuration file
+-D <property=value> define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from 
+configurations.
+-jt <local|resourcemanager:port> specify a ResourceManager
+-files <file1,...> specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...> specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...> specify a comma-separated list of archives to be unarchived on the compute machines
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+Usage: hadoop fs [generic options] -find <path> ... <expression> ...
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP
+2024-03-07 14:12:12,497 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+/ARP
+/ARP/my_data
+/ARP/my_data/sample.txt
+/ARP/my_data/test.txt
+/ARP/test.txt
+/ARP/test2.txt
+/ARP/test3.txt
+/ARP/test4.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP -name test -print
+2024-03-07 14:13:03,749 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP
+2024-03-07 14:13:22,928 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+/ARP
+/ARP/my_data
+/ARP/my_data/sample.txt
+/ARP/my_data/test.txt
+/ARP/test.txt
+/ARP/test2.txt
+/ARP/test3.txt
+/ARP/test4.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -find /ARP/test2.txt
+2024-03-07 14:13:32,545 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+/ARP/test2.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -tail /ARP/test2.txt
+2024-03-07 14:13:57,488 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+this is file which is append in file 1
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -ls /ARP
+2024-03-07 14:15:25,250 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+Found 5 items
+drwxr-xr-x - hduser supergroup 0 2024-03-07 13:14 /ARP/my_data
+-rw-r--r-- 1 hduser supergroup 58 2024-03-07 13:24 /ARP/test.txt
+-rw-r--r-- 1 hduser supergroup 39 2024-03-07 13:30 /ARP/test2.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:40 /ARP/test3.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:44 /ARP/test4.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -chown -r hduser /ARP/test.txt
+2024-03-07 14:17:10,159 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+-chown: Illegal option -r
+Usage: hadoop fs [generic options]
+[-appendToFile <localsrc> ... <dst>]
+[-cat [-ignoreCrc] <src> ...]
+[-checksum [-v] <src> ...]
+[-chgrp [-R] GROUP PATH...]
+[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+[-chown [-R] [OWNER][:[GROUP]] PATH...]
+[-concat <target path> <src path> <src path> ...]
+[-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
+[-copyToLocal [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... 
+<localdst>]
+[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] [-s] <path> ...]
+[-cp [-f] [-p | -p[topax]] [-d] [-t <thread count>] [-q <thread pool queue size>] <src> ... <dst>]
+[-createSnapshot <snapshotDir> [<snapshotName>]]
+[-deleteSnapshot <snapshotDir> <snapshotName>]
+[-df [-h] [<path> ...]]
+[-du [-s] [-h] [-v] [-x] <path> ...]
+[-expunge [-immediate] [-fs <path>]]
+[-find <path> ... <expression> ...]
+[-get [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
+[-getfacl [-R] <path>]
+[-getfattr [-R] {-n name | -d} [-e en] <path>]
+[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+[-head <file>]
+[-help [cmd ...]]
+[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
+[-mkdir [-p] <path> ...]
+[-moveFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+[-moveToLocal <src> <localdst>]
+[-mv <src> ... <dst>]
+[-put [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
+[-renameSnapshot <snapshotDir> <oldName> <newName>]
+[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+[-setfattr {-n name [-v value] | -x name} <path>]
+[-setrep [-R] [-w] <rep> <path> ...]
+[-stat [format] <path> ...]
+[-tail [-f] [-s <sleep interval>] <file>]
+[-test -[defswrz] <path>]
+[-text [-ignoreCrc] <src> ...]
+[-touch [-a] [-m] [-t TIMESTAMP (yyyyMMdd:HHmmss) ] [-c] <path> ...]
+[-touchz <path> ...]
+[-truncate [-w] <length> <path> ...]
+[-usage [cmd ...]]
+Generic options supported are:
+-conf <configuration file> specify an application configuration file
+-D <property=value> define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from 
+configurations.
+-jt <local|resourcemanager:port> specify a ResourceManager
+-files <file1,...> specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...> specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...> specify a comma-separated list of archives to be unarchived on the compute machines
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+Usage: hadoop fs [generic options] -chown [-R] [OWNER][:[GROUP]] PATH...
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -chown hduser1 /ARP/test.txt
+2024-03-07 14:17:50,089 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -ls /ARP
+2024-03-07 14:17:54,861 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+Found 5 items
+drwxr-xr-x - hduser supergroup 0 2024-03-07 13:14 /ARP/my_data
+-rw-r--r-- 1 hduser1 supergroup 58 2024-03-07 13:24 /ARP/test.txt
+-rw-r--r-- 1 hduser supergroup 39 2024-03-07 13:30 /ARP/test2.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:40 /ARP/test3.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:44 /ARP/test4.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -chmod -r /ARP/test.txt
+2024-03-07 14:18:27,911 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -ls /ARP
+2024-03-07 14:18:35,709 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+Found 5 items
+drwxr-xr-x - hduser supergroup 0 2024-03-07 13:14 /ARP/my_data
+--w------- 1 hduser1 supergroup 58 2024-03-07 13:24 /ARP/test.txt
+-rw-r--r-- 1 hduser supergroup 39 2024-03-07 13:30 /ARP/test2.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:40 /ARP/test3.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:44 /ARP/test4.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -chmod -r /ARP/test2.txt
+2024-03-07 14:19:46,116 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -ls /ARP
+2024-03-07 14:19:50,323 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+Found 5 items
+drwxr-xr-x - hduser supergroup 0 2024-03-07 13:14 /ARP/my_data
+--w------- 1 hduser1 supergroup 58 2024-03-07 13:24 /ARP/test.txt
+--w------- 1 hduser supergroup 39 2024-03-07 13:30 /ARP/test2.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:40 /ARP/test3.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:44 /ARP/test4.txt
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -chmod -r test2.txt
+2024-03-07 14:20:09,004 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+chmod: `test2.txt': No such file or directory
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -chmod -r /ARP/test2.txt
+2024-03-07 14:21:31,563 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+hduser@student-ThinkCentre-M700:~/Documents$ hdfs dfs -ls /ARP
+2024-03-07 14:21:35,113 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... 
+using builtin-java classes where applicable
+Found 5 items
+drwxr-xr-x - hduser supergroup 0 2024-03-07 13:14 /ARP/my_data
+--w------- 1 hduser1 supergroup 58 2024-03-07 13:24 /ARP/test.txt
+--w------- 1 hduser supergroup 39 2024-03-07 13:30 /ARP/test2.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:40 /ARP/test3.txt
+-rw-r--r-- 1 hduser supergroup 0 2024-03-07 13:44 /ARP/test4.txt
+hduser@student-ThinkCentre-M700:~/Documents$ 
