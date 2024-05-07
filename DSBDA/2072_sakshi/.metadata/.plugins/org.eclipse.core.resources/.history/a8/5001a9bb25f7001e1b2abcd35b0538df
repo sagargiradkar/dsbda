@@ -1,0 +1,14 @@
+public class WDriver {
+
+	public static void main(String args[]){
+		Configuration c=new Configuration();
+		Job job=new Job(c,"wordcount");
+		job.setJarByClass(WDriver.class);
+		job.setMapperClass(MapForWordCount.class);
+		job.setReducerClass(ReduceForWordCount.class);
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(IntWritable.class);
+		FileInputFormat.addInputPath(job, new Path(args[0]));
+		FileOutputFormat.setOutputPath(job, new Path(args[0]););
+		
+	}

@@ -1,0 +1,3 @@
+hadoop jar /usr/local/hadoop-inst/share/hadoop/tools/lib/hadoop-streaming-2.9.0.jar -input /my_data/pydata.txt -output /my_data/pyoutput1 -file mapper.py -file reducer.py -mapper "python3 mapper.py" -reducer "python3 reducer.py"
+hdfs dfs -cat /my_data/pyoutput1/*
+

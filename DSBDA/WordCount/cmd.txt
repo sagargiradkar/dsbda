@@ -1,0 +1,2 @@
+hadoop jar wordcount.jar WDriver /my_data/hd.txt /my_data/output/
+hdfs dfs -cat /my_data/output/*

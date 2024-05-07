@@ -1,0 +1,3 @@
+hadoop jar logfile.jar LogCount /my_data/access_log_short.txt /my_data/output2/
+hdfs dfs -cat /my_data/output2/*
+
