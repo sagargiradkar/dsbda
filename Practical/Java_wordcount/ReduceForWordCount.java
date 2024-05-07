@@ -1,10 +1,12 @@
 import java.io.IOException;
+
 import org.apache.hadoop.io.IntWritable;
+
 import org.apache.hadoop.io.Text;
+
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class myReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
-
+public class ReduceForWordCount extends Reducer<Text, IntWritable, Text, IntWritable> {
 	public void reduce(Text word, Iterable<IntWritable> values, Context con) throws IOException, InterruptedException {
 		int sum = 0;
 		for (IntWritable value : values) {
